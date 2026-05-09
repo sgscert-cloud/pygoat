@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     dnsutils \
     libpq-dev \
     python3-dev \
+    build-essential \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -21,7 +22,8 @@ ENV PYTHONUNBUFFERED=1
 
 
 # Install dependencies
-RUN python -m pip install --no-cache-dir pip==22.0.4
+#RUN python -m pip install --no-cache-dir pip==22.0.4
+RUN python -m pip install --upgrade pip
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
